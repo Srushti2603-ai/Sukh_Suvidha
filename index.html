@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sukh vs Suvidha Simulator</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#243047}
+header{background:linear-gradient(120deg,#174b43,#26846e);color:white;text-align:center;padding:30px 15px}
+header h1{margin:0 0 10px;font-size:30px}
+.container{max-width:1000px;margin:25px auto;padding:15px}
+.card{background:white;padding:22px;margin-bottom:20px;border-radius:13px;box-shadow:0 3px 12px #00000010}
+h2{color:#176454}
+h3{color:#315d55}
+p{line-height:1.6}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+button{background:#237c68;color:white;border:0;padding:11px 17px;border-radius:7px;cursor:pointer;margin:4px}
+button:hover{background:#155443}
+input,select{padding:10px;border:1px solid #ccd5df;border-radius:6px;margin:7px}
+.section{display:none}
+.active{display:block}
+.output{background:#edf5f2;padding:15px;border-radius:8px;margin-top:15px;white-space:pre-wrap}
+.good{color:green;font-weight:bold}
+.bad{color:#c0392b;font-weight:bold}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.panel{padding:16px;border-radius:10px;background:#e8f5ef}
+.panel:nth-child(2){background:#fff3e2}
+table{width:100%;border-collapse:collapse}
+td,th{padding:11px;border:1px solid #ccd5df;text-align:left}
+th{background:#e4eee9}
+.bar{height:15px;background:#dce5e2;border-radius:10px;overflow:hidden}
+.fill{height:100%;background:#27886b;width:0%;transition:width .4s}
+@media(max-width:650px){.compare{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>CONTINUOUS HAPPINESS (SUKH) VS. PHYSICAL FACILITIES (SUVIDHA)</h1>
+<p>Interactive Human Values and Professional Ethics Simulator</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Introduction</h2>
+<p>
+Human beings have two important requirements in life:
+happiness (Sukh) and physical facilities (Suvidha).
+Both are important, but they are not the same.
+Understanding the difference helps us live a balanced,
+peaceful and meaningful life.
+</p>
+<div class="compare">
+<div class="panel">
+<h3>😊 Sukh (Happiness)</h3>
+<p>Inner feeling of peace, satisfaction, trust, respect and harmony.</p>
+</div>
+<div class="panel">
+<h3>🏠 Suvidha (Physical Facilities)</h3>
+<p>Material things required for physical comfort and daily living.</p>
+</div>
+</div>
+</div>
+
+<div class="tabs">
+<button onclick="show('concept')">Concept</button>
+<button onclick="show('simulation')">Interactive Simulator</button>
+<button onclick="show('examples')">Daily Life Examples</button>
+<button onclick="show('quiz')">Knowledge Quiz</button>
+</div>
+
+<!-- CONCEPT -->
+
+<div id="concept" class="section active">
+<div class="card">
+<h2>1. Understanding Sukh</h2>
+<p>
+Sukh means a state of happiness, harmony and inner satisfaction.
+It is related to our thoughts, feelings and relationships.
+</p>
+<ul>
+<li>Peace of mind</li>
+<li>Trust in relationships</li>
+<li>Respect and affection</li>
+<li>Self-confidence</li>
+<li>Contentment and satisfaction</li>
+</ul>
+<h2>2. Understanding Suvidha</h2>
+<p>
+Suvidha means physical facilities or material resources
+needed to fulfil the requirements of the body.
+</p>
+<ul>
+<li>Food and water</li>
+<li>Clothing</li>
+<li>House and furniture</li>
+<li>Vehicles and electronic devices</li>
+<li>Money and other material resources</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Key Differences</h2>
+<table>
+<tr><th>Basis</th><th>Sukh</th><th>Suvidha</th></tr>
+<tr><td>Meaning</td><td>Happiness and inner satisfaction</td><td>Physical facilities</td></tr>
+<tr><td>Related to</td><td>Self and feelings</td><td>Physical body</td></tr>
+<tr><td>Nature</td><td>Qualitative</td><td>Quantitative</td></tr>
+<tr><td>Requirement</td><td>Continuous</td><td>Limited and measurable</td></tr>
+<tr><td>Examples</td><td>Love, trust, peace</td><td>Food, house, car</td></tr>
+<tr><td>Fulfilment</td><td>Right understanding and relationships</td><td>Material resources</td></tr>
+</table>
+</div>
+</div>
+
+<!-- SIMULATOR -->
+
+<div id="simulation" class="section">
+<div class="card">
+<h2>Interactive Happiness vs Facilities Simulator</h2>
+<p>
+Imagine you are evaluating your satisfaction in life.
+Adjust the values below and observe the difference between
+material facilities and inner happiness.
+</p>
+
+<label>Physical Facilities (Suvidha): <b id="sval">50</b>%</label><br>
+<input type="range" id="suvidha" min="0" max="100" value="50"
+oninput="calculate()" style="width:90%">
+
+<br><br>
+
+<label>Inner Happiness (Sukh): <b id="hval">50</b>%</label><br>
+<input type="range" id="sukh" min="0" max="100" value="50"
+oninput="calculate()" style="width:90%">
+
+<div class="card">
+<h3>Physical Facilities</h3>
+<div class="bar"><div class="fill" id="sbar"></div></div>
+<h3>Inner Happiness</h3>
+<div class="bar"><div class="fill" id="hbar"></div></div>
+</div>
+
+<div id="result" class="output">
+Adjust the sliders to explore the difference.
+</div>
+
+<button onclick="reset()">Reset Simulation</button>
+</div>
+
+<div class="card">
+<h2>Think and Understand</h2>
+<p>
+A person may own a luxurious house, expensive car and lots of money,
+but may still feel lonely or unhappy.
+</p>
+<p>
+Another person may have simple physical facilities but enjoy
+trusting relationships, peace and satisfaction.
+</p>
+<p><b>Conclusion:</b> Physical facilities alone cannot guarantee continuous happiness.</p>
+</div>
+</div>
+
+<!-- EXAMPLES -->
+
+<div id="examples" class="section">
+<div class="card">
+<h2>Real-Life Situations</h2>
+
+<h3>Example 1: Expensive Mobile Phone</h3>
+<p>
+Buying an expensive mobile phone provides physical comfort
+and convenience (Suvidha). However, it does not automatically
+provide peace, love or happiness (Sukh).
+</p>
+
+<h3>Example 2: Family Relationships</h3>
+<p>
+A family with mutual trust, respect and affection experiences
+happiness even if it does not own expensive things.
+</p>
+
+<h3>Example 3: Career and Money</h3>
+<p>
+A high-paying job may provide financial facilities.
+But job satisfaction, meaningful work and healthy relationships
+are also important for happiness.
+</p>
+
+<h3>Example 4: Sharing Food</h3>
+<p>
+Food fulfils a physical need. Sharing food with loved ones
+also creates affection, belonging and happiness.
+</p>
+</div>
+</div>
+
+<!-- QUIZ -->
+
+<div id="quiz" class="section">
+<div class="card">
+<h2>Knowledge Assessment</h2>
+
+<p><b>Q1. What does Sukh mean?</b></p>
+<label><input type="radio" name="q1" value="a"> Material wealth</label><br>
+<label><input type="radio" name="q1" value="b"> Inner happiness and satisfaction</label><br>
+<label><input type="radio" name="q1" value="c"> Physical comfort</label>
+
+<p><b>Q2. Which of the following is Suvidha?</b></p>
+<label><input type="radio" name="q2" value="a"> Trust</label><br>
+<label><input type="radio" name="q2" value="b"> Respect</label><br>
+<label><input type="radio" name="q2" value="c"> House and vehicle</label>
+
+<p><b>Q3. Can physical facilities alone guarantee happiness?</b></p>
+<label><input type="radio" name="q3" value="a"> Yes</label><br>
+<label><input type="radio" name="q3" value="b"> No</label>
+
+<p><b>Q4. Happiness is mainly related to:</b></p>
+<label><input type="radio" name="q4" value="a"> Inner self and relationships</label><br>
+<label><input type="radio" name="q4" value="b"> Expensive objects</label><br>
+<label><input type="radio" name="q4" value="c"> Money only</label>
+
+<button onclick="checkQuiz()">Submit Answers</button>
+<button onclick="location.reload()">Restart Quiz</button>
+
+<div class="output" id="quizResult">Your score will appear here.</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Final Conclusion</h2>
+<p>
+Sukh and Suvidha are both important aspects of human life.
+Suvidha fulfils the physical requirements of the body,
+whereas Sukh fulfils the need for happiness and harmony.
+A balanced life requires adequate physical facilities
+along with right understanding, good relationships and inner satisfaction.
+</p>
+</div>
+
+</div>
+
+<script>
+function show(id){
+document.querySelectorAll('.section').forEach(
+s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+function calculate(){
+let s=Number(document.getElementById('suvidha').value);
+let h=Number(document.getElementById('sukh').value);
+
+document.getElementById('sval').innerText=s;
+document.getElementById('hval').innerText=h;
+
+document.getElementById('sbar').style.width=s+'%';
+document.getElementById('hbar').style.width=h+'%';
+
+let msg='';
+
+if(s>=75 && h<35){
+msg='High physical facilities but low inner happiness. This shows that material comfort alone does not ensure happiness.';
+}
+else if(h>=75 && s<35){
+msg='High inner happiness with limited physical facilities. Good relationships and peace contribute to satisfaction.';
+}
+else if(s>=65 && h>=65){
+msg='Both physical facilities and happiness are at a high level. A balanced situation!';
+}
+else if(s<35 && h<35){
+msg='Both areas need attention. Focus on essential physical needs, right understanding and healthy relationships.';
+}
+else{
+msg='A moderate situation. Remember that physical facilities and inner happiness are different requirements.';
+}
+
+document.getElementById('result').innerHTML=
+'<b>Simulation Result</b><br>'+msg+
+'<br><br><b>Learning:</b> Increasing physical facilities does not automatically increase inner happiness.';
+}
+
+function reset(){
+document.getElementById('suvidha').value=50;
+document.getElementById('sukh').value=50;
+calculate();
+}
+
+function checkQuiz(){
+let answers={q1:'b',q2:'c',q3:'b',q4:'a'};
+let score=0;
+let total=4;
+
+for(let q in answers){
+let selected=document.querySelector('input[name="'+q+'"]:checked');
+if(selected && selected.value===answers[q]) score++;
+}
+
+document.getElementById('quizResult').innerHTML=
+'<b>Your Score: '+score+'/'+total+'</b><br>'+
+(score===total?'Excellent! All answers are correct.':
+'Good attempt! Review the concepts and try again.');
+}
+
+calculate();
+</script>
+
+</body>
+</html>
